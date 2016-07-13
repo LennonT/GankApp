@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.ted.gank" >
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <permission
+        android:name="com.android.ted.ACCESS_UPDATE_RESULT"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.android.ted.ACCESS_UPDATE_RESULT" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:name=".GankApplication"
+        android:theme="@style/AppTheme" >
+
+        <activity android:name=".main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".main.ViewerActivity"
+            android:theme="@style/ViewerTheme" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.android.ted.gank.main.BenefitListFragment.UpdateResultReceiver"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/paths"/>
+        </provider>
+
+        <service android:name=".service.ImageImproveService" />
+
+        <meta-data android:value="55e2fde267e58e7977004991" android:name="UMENG_APPKEY"></meta-data>
+        <meta-data android:value="Common" android:name="UMENG_CHANNEL"/>
+
+    </application>
+
+
+</manifest>
